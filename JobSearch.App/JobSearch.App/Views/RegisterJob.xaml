@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobSearch.App.Views.RegisterJob">
+    <ContentPage.Content>
+        <StackLayout Spacing="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="&#xf359;" Style="{StaticResource GoBack}" Clicked="GoBack"/>
+                <Label Text=" Jobsearch" Style="{StaticResource Title}" Grid.Column="1" Padding="0,20"/>
+                <Button Text="&#xf14a;" FontSize="35" FontFamily="FontAwesome" Grid.Column="2" Clicked="Save"/>
+            </Grid>
+            <BoxView Color="#D7CCFF" HeightRequest="1"/>
+
+            <ScrollView>
+                <StackLayout>
+                    <Label x:Name="TxtMessages" TextColor="Red"/>
+                    <Frame Style="{StaticResource EntryFrame}" Margin="0,10,0,0" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtCompany" Placeholder="Empresa" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtJobTitle" Placeholder="Cargo" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtCityState" Placeholder="Cidade/UF" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtInitialSalary" Keyboard="Numeric" Placeholder="Salário mínimo (R$)" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtFinalSalary" Keyboard="Numeric" Placeholder="Salário máximo (R$)" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Regime" Style="{StaticResource LabelEntry}"/>
+                            <RadioButton x:Name="RBCLT" IsChecked="True" Content="CLT" Grid.Column="1"/>
+                            <RadioButton Content="PJ" Grid.Column="2"/>
+                        </Grid>
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtTecnologyTools" Placeholder="Tecnologia/Ferramentas" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Editor x:Name="TxtCompanyDescription" AutoSize="TextChanges" Placeholder="Descrição da empresa" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Editor x:Name="TxtJobDescription" AutoSize="TextChanges" Placeholder="Descição do trabalho" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtBenefits" Placeholder="Benefícios" />
+                    </Frame>
+                    <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Entry x:Name="TxtInterestedSendEmailTo" Placeholder="Interessados enviar email para" />
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

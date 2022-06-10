@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JobSearch.App.Views.Register">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="&#xf359;" Style="{StaticResource GoBack}" Clicked="GoBack"/>
+                <Label Text=" Jobsearch" Style="{StaticResource Title}" Grid.Column="1" Padding="0,20"/>
+            </Grid>
+            
+            <BoxView Color="#D7CCFF" HeightRequest="1"/>
+
+            <Label x:Name="TxtMessages" TextColor="Red"/>
+
+            <Grid VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Entry x:Name="TxtName" Placeholder="Nome" />
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}"  Grid.Row="1" Grid.ColumnSpan="2">
+                    <Entry x:Name="TxtEmail" Placeholder="E-Mail"/>
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}"  Grid.Row="2" Grid.ColumnSpan="2">
+                    <Entry x:Name="TxtPassword" Placeholder="Senha"/>
+                </Frame>
+
+                <Button Text="Salvar" Grid.Row="3" Clicked="SaveAction"/>
+               
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

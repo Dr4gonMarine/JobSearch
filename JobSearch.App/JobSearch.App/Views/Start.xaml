@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:JobSearch.App.Utility.Controls"
+             x:Class="JobSearch.App.Views.Start">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HeightRequest="130">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text=" Jobsearch" Style="{StaticResource Title}" Padding="0,20"/>
+                <Button Text="+Add Job" FontSize="12" Grid.Column="1" Clicked="GoRegisterJob"/>
+                <Button Text="&#xf057;" FontFamily="FontAwesome" FontSize="30" Grid.Column="2" Clicked="LogOut" Padding="0"/>
+            </Grid>
+            <BoxView Color="#D7CCFF" HeightRequest="1"/>
+            <Grid Margin="0,10,0,0" HeightRequest="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Frame Style="{StaticResource EntryFrame}" Grid.Row="0" Padding="0" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Text="&#xf111;" Style="{StaticResource ButtonSearch}" Clicked="FocusPesquisa"/>
+                        <Entry Placeholder="Pesquisa" x:Name="TxtPesquisa" Grid.Column="1"/>
+                    </Grid>
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}"  Grid.Row="1" Padding="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Text="&#xf279;" Style="{StaticResource ButtonSearch}" Clicked="FocusCityState"/>
+                        <Entry Placeholder="Cidade/Estado" x:Name="TxtCityState" Grid.Column="1"/>
+                    </Grid>
+                </Frame>
+
+                <Button Text="Pesquisar" FontSize="10" Grid.Row="1" Grid.Column="1" Clicked="Search"/>
+            </Grid>
+            <Label x:Name="TxtResultCount" Style="{StaticResource JobTitle}"/>
+            <Grid>
+                <CollectionView x:Name="ListOfJobs" RemainingItemsThresholdReached="InfinitySearch">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="5">
+                                <Frame Padding="10" CornerRadius="10" BorderColor="{StaticResource GrayBlue}" HasShadow="True">
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoVisualize" CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="{Binding Company}"  Style="{StaticResource CompanyCityStateLabel}" Grid.ColumnSpan="2"/>
+                                        <Label Text="{Binding JobTitle}" Grid.Row="1" Style="{StaticResource JobTitle}"/>
+                                        <Label Text="{Binding CityState}" Grid.Row="2"  Style="{StaticResource CompanyCityStateLabel}"/>
+                                        <control:TagView Tecnologies="{Binding TecnologyTools}" NumberOfWords="3" Grid.Row="3"/>
+
+                                        <Label Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding InitialSalary}" Style="{StaticResource MoneyLabel}"/>
+                                                    <Span Text=" - " Style="{StaticResource CurrencyLabel}"/>
+                                                    <Span Text="{Binding FinalSalary}" Style="{StaticResource MoneyLabel}"/>
+                                                    <Span Text="&#x0a;" Style="{StaticResource CurrencyLabel}"/>
+                                                    <Span Text=" BRL " Style="{StaticResource CurrencyLabel}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource IdLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Id. " Style="{StaticResource MoneyLabel}"/>
+                                                    <Span Text="{Binding Id}" Style="{StaticResource CurrencyLabel}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label x:Name="NoResult" Text="0 resultados" Style="{StaticResource CompanyCityStateLabel}" IsVisible="false"/>
+                <ActivityIndicator x:Name="Loading" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
